@@ -1,0 +1,344 @@
+import os
+import datetime
+import csv
+import pandas as pd
+from pathlib import Path
+    
+def Login():
+    os.system('cls')
+    print("="* 115)
+    print('LOGIN'.center(115) )
+    print('=' * 115)
+    Username = input("Masukkan Nama Pengguna Anda: ")
+    Password = input("Masukkan Kata Sandi Anda: ")
+    with open('akun.csv', mode='r') as filecsv:
+         reader = csv.DictReader(filecsv)
+         for row in reader:
+              if row['Username'] == Username and row["Password"] == Password:
+                   print("LOGIN Berhasil!")
+                   return True
+    print("Username atau Password salah")
+    input('Tekan Enter Untuk Melanjutkan')
+    Login ()       
+
+def Register():
+     os.system('cls')
+     print('='* 115)
+     print("REGISTER".center(115))
+     print("="*115)
+     Username = input('Masukkan Nama Pengguna Anda: ')
+     Password = input('Masukkan Kata Sandi Sesuai Keinginan Anda: ')
+     with open("akun.csv", mode='r') as filecsv:
+          reader = csv.DictReader(filecsv)
+          for row in reader:
+               if row['Username'] == Username:
+                    print('Usename Sudah Digunakan!')
+                    return
+     with open('akun.csv', mode='a') as filecsv:
+          writer = csv.writer(filecsv)
+          writer.writerow([Username, Password])
+     print('Register Berhasil!')
+
+def LoginAdmin():
+     os.system('cls')
+     print("="* 115)
+     print('LOGIN'.center(115) )
+     print('=' * 115)
+     Username = input('Masukkan Nama Pengguna Anda: ')
+     Password = input('Masukkan Kata Sandi Anda: ')
+
+     with open('admin.csv', mode='r') as filecsv:
+          reader = csv.DictReader(filecsv)
+          for row in reader:
+               if row["Username"] == Username and row['Password'] == Password:
+                    print("LOGIN Anda Sebagai Admin Berhasil")
+                    input('Tekan Enter Untuk Melanjutkan')
+               else:
+                    print('Usename atau Password yang anda masukkan salah')
+                    input('Tekan Enter Untuk Melanjutkan ')
+                    LoginAdmin()
+
+def cekAkunRegister():
+     if not(Path("akun.csv").is_file()):
+          with open('akun.csv', mode='w', newline=' ') as filecsv:       
+               header = csv.DictWriter(filecsv, fieldnames=['Username', 'Password'], delimiter= ",")
+               header.writeheader()
+               filecsv.close()
+               Register()
+               input("\n Enter untuk melanjutkan")
+               tampilanAwal()
+     else:
+          Register()
+          input('\n Enter Untuk Melanjutkan')
+          tampilanAwal()
+
+def cekAkunAdmin():
+     if not(Path('admin.csv').is_file()):
+          with open('admin.csv', mode='w' , newline=" ") as filecsv:
+               header = csv.DictWriter(filecsv, fieldnames=['Username','Password' ], delimiter= ",")
+               header.writeheader()
+               writer = csv.writer(filecsv)
+               writer.writerow(["admin","admin987"])
+               filecsv.close()
+          LoginAdmin()
+
+global jam
+
+def jadwalSenin():
+     os.system('cls')
+     print("=" * 58) 
+     print('|','   JADWAL KOSONG BURUH TANI SELAMA 1 MINGGU KEDEPAN   '.center(56), "|" )   
+     print('=' * 58)
+     mydata = [['=' * 10, '='* 20, '='* 20], ['Senin', '04:00-06:00', 'Pak Budi'], ["Senin", '06:30-08:30', 'Pak Budi'], ["Senin", '09:00-11:00', 'Pak Budi'], ["Senin", '12:00-14:00', 'Pak Budi'], ["Senin", '14:30-16:30', 'Pak Budi'], ['Senin', '04:00-06:00', 'Pak Ali'], ["Senin", '06:30-08:30', 'Pak Ali'], ["Senin", '09:00-11:00', 'Pak Ali'], ["Senin", '12:00-14:00', 'Pak Ali'], ["Senin", '14:30-16:30', 'Pak Ali'] ]
+     nama_kolom = ['HARI', 'JAM', 'PENGGARAP']
+     df = pd.DataFrame(mydata, columns = nama_kolom)
+     # while True:
+     print(df)
+     jam = int(input('\nAnda Ingin Memesan pada Jam berapa, [1], [2], [3], [4], [5], [6], [7]: '))
+     baris_terpilih = df.iloc[int(jam)]
+     file_csv = "riwayat.csv"
+     baris_terpilih.to_csv(file_csv, mode='a', index=False, header=False)
+     df = df.drop(index=int(jam))   
+
+def jadwalSelasa():
+     os.system('cls')
+     print("=" * 58) 
+     print('|','JADWAL KOSONG BURUH TANI SELAMA 1 MINGGU KEDEPAN'.center(56), "|" )   
+     print('=' * 58)
+     mydata = [['=' * 10, '='* 20, '='* 20], ['Selasa', '04:00-06:00', 'Pak Budi'], ["Selasa", '06:30-08:30', 'Pak Budi'], ["Selasa", '09:00-11:00', 'Pak Budi'], ["Selasa", '12:00-14:00', 'Pak Budi'], ["Selasa", '14:30-16:30', 'Pak Budi'], ['Selasa', '04:00-06:00', 'Pak Ali'], ["Selasa", '06:30-08:30', 'Pak Ali'], ["Selasa", '09:00-11:00', 'Pak Ali'], ["Selasa", '12:00-14:00', 'Pak Ali'], ["Selasa", '14:30-16:30', 'Pak Ali'] ]
+     nama_kolom = ['HARI', 'JAM', 'PENGGARAP']
+     df = pd.DataFrame(mydata, columns = nama_kolom)
+     print(df)
+     jam = int(input('\nAnda Ingin Memesan pada Jam berapa, [1], [2], [3], [4], [5], [6], [7]: '))
+     baris_terpilih = df.iloc[int(jam)]
+     file_csv = "riwayat.csv"
+     baris_terpilih.to_csv(file_csv, mode='a', index=False, header=False)
+     df = df.drop(index=int(jam))
+
+def jadwalRabu():
+     os.system('cls')
+     print("=" * 58) 
+     print('|','JADWAL KOSONG BURUH TANI SELAMA 1 MINGGU KEDEPAN'.center(56), "|" )   
+     print('=' * 58)
+     mydata = [['=' * 10, '='* 20, '='* 20], ['Rabu', '04:00-06:00', 'Pak Budi'], ["Rabu", '06:30-08:30', 'Pak Budi'], ["Rabu", '09:00-11:00', 'Pak Budi'], ["Rabu", '12:00-14:00', 'Pak Budi'], ["Rabu", '14:30-16:30', 'Pak Budi'], ['Rabu', '04:00-06:00', 'Pak Ali'], ["Rabu", '06:30-08:30', 'Pak Ali'], ["Rabu", '09:00-11:00', 'Pak Ali'], ["Rabu", '12:00-14:00', 'Pak Ali'], ["Rabu", '14:30-16:30', 'Pak Ali'] ]
+     nama_kolom = ['HARI', 'JAM', 'PENGGARAP']
+     df = pd.DataFrame(mydata, columns = nama_kolom)
+     print(df)
+     jam = int(input('\nAnda Ingin Memesan pada Jam berapa, [1], [2], [3], [4], [5], [6], [7]: '))
+     baris_terpilih = df.iloc[int(jam)]
+     file_csv = "riwayat.csv"
+     baris_terpilih.to_csv(file_csv, mode='a', index=False, header=False)
+     df = df.drop(index=int(jam))
+
+def jadwalKamis():
+     os.system('cls')
+     print("=" * 58) 
+     print('|','   JADWAL KOSONG BURUH TANI SELAMA 1 MINGGU KEDEPAN   ', "|" )   
+     print('=' * 58)
+     mydata = [['=' * 10, '='* 20, '='* 20], ['Kamis', '04:00-06:00', 'Pak Budi'], ["Kamis", '06:30-08:30', 'Pak Budi'], ["Kamis", '09:00-11:00', 'Pak Budi'], ["Kamis", '12:00-14:00', 'Pak Budi'], ["Kamis", '14:30-16:30', 'Pak Budi'], ['Kamis', '04:00-06:00', 'Pak Ali'], ["Kamis", '06:30-08:30', 'Pak Ali'], ["Kamis", '09:00-11:00', 'Pak Ali'], ["Kamis", '12:00-14:00', 'Pak Ali'], ["Kamis", '14:30-16:30', 'Pak Ali'] ]
+     nama_kolom = ['HARI', 'JAM', 'PENGGARAP']
+     df = pd.DataFrame(mydata, columns = nama_kolom)
+     print(df)
+     jam = int(input('\nAnda Ingin Memesan pada Jam berapa, [1], [2], [3], [4], [5], [6], [7]: '))
+     baris_terpilih = df.iloc[int(jam)]
+     file_csv = "riwayat.csv"
+     baris_terpilih.to_csv(file_csv, mode='a', index=False, header=False)
+     df = df.drop(index=int(jam)) 
+
+def jadwalJumat():
+     os.system('cls')
+     print("=" * 58) 
+     print('|','   JADWAL KOSONG BURUH TANI SELAMA 1 MINGGU KEDEPAN   ', "|" )   
+     print('=' * 58)
+     mydata = [['=' * 10, '='* 20, '='* 20], ['Jumat', '04:00-06:00', 'Pak Budi'], ["Jumat", '06:30-08:30', 'Pak Budi'], ["Jumat", '09:00-11:00', 'Pak Budi'], ["Jumat", '12:00-14:00', 'Pak Budi'], ["Jumat", '14:30-16:30', 'Pak Budi'], ['Jumat', '04:00-06:00', 'Pak Ali'], ["Jumat", '06:30-08:30', 'Pak Ali'], ["Jumat", '09:00-11:00', 'Pak Ali'], ["Jumat", '12:00-14:00', 'Pak Ali'], ["Jumat", '14:30-16:30', 'Pak Ali'] ]
+     nama_kolom = ['HARI', 'JAM', 'PENGGARAP']
+     df = pd.DataFrame(mydata, columns = nama_kolom)
+     print(df)
+     jam = int(input('\nAnda Ingin Memesan pada Jam berapa, [1], [2], [3], [4], [5], [6], [7]: '))
+     baris_terpilih = df.iloc[int(jam)]
+     file_csv = "riwayat.csv"
+     baris_terpilih.to_csv(file_csv, mode='a', index=False, header=False)
+     df = df.drop(index=int(jam)) 
+
+def jadwalSabtu():
+     os.system('cls')
+     print("=" * 58) 
+     print('|','   JADWAL KOSONG BURUH TANI SELAMA 1 MINGGU KEDEPAN   ', "|" )   
+     print('=' * 58)
+     mydata = [['=' * 10, '='* 20, '='* 20], ['Sabtu', '04:00-06:00', 'Pak Budi'], ["Sabtu", '06:30-08:30', 'Pak Budi'], ["Sabtu", '09:00-11:00', 'Pak Budi'], ["Sabtu", '12:00-14:00', 'Pak Budi'], ["Sabtu", '14:30-16:30', 'Pak Budi'], ['Sabtu', '04:00-06:00', 'Pak Ali'], ["Sabtu", '06:30-08:30', 'Pak Ali'], ["Sabtu", '09:00-11:00', 'Pak Ali'], ["Sabtu", '12:00-14:00', 'Pak Ali'], ["Sabtu", '14:30-16:30', 'Pak Ali'] ]
+     nama_kolom = ['HARI', 'JAM', 'PENGGARAP']
+     df = pd.DataFrame(mydata, columns = nama_kolom)
+     print(df)
+     jam = int(input('\nAnda Ingin Memesan pada Jam berapa, [1], [2], [3], [4], [5], [6], [7]: '))
+     baris_terpilih = df.iloc[int(jam)]
+     file_csv = "riwayat.csv"
+     baris_terpilih.to_csv(file_csv, mode='a', index=False, header=False)
+     df = df.drop(index=int(jam))
+
+def jadwalMinggu():
+     os.system('cls')
+     print("=" * 58) 
+     print('|','   JADWAL KOSONG BURUH TANI SELAMA 1 MINGGU KEDEPAN   ', "|" )   
+     print('=' * 58)
+     mydata = [['=' * 10, '='* 20, '='* 20], ['Minggu', '04:00-06:00', 'Pak Budi'], ["Minggu", '06:30-08:30', 'Pak Budi'], ["Minggu", '09:00-11:00', 'Pak Budi'], ["Minggu", '12:00-14:00', 'Pak Budi'], ["Minggu", '14:30-16:30', 'Pak Budi'], ['Minggu', '04:00-06:00', 'Pak Ali'], ["Minggu", '06:30-08:30', 'Pak Ali'], ["Minggu", '09:00-11:00', 'Pak Ali'], ["Minggu", '12:00-14:00', 'Pak Ali'], ["Minggu", '14:30-16:30', 'Pak Ali'] ]
+     nama_kolom = ['HARI', 'JAM', 'PENGGARAP']
+     df = pd.DataFrame(mydata, columns = nama_kolom)
+     print(df)
+     jam = int(input('\nAnda Ingin Memesan pada Jam berapa, [1], [2], [3], [4], [5], [6], [7]: '))
+     baris_terpilih = df.iloc[int(jam)]
+     file_csv = "riwayat.csv"
+     baris_terpilih.to_csv(file_csv, mode='a', index=False, header=False)
+     df = df.drop(index=int(jam))
+
+def pesanan():
+     os.system('cls')
+     print('=' * 50)
+     print('|', 'SELAMAT DATANG DI APLIKASI "GARAP"'.center(52), '|')
+     print('=' * 50)
+     print(" \n Apakah Ada yang Bisa Saya Bantu Untuk Merawat Lahan Pertanian Anda?")
+     print("=" * 50)
+     print('| ','NO |','      Pilihan Jasa      | Harga (per jam)|')
+     print("=" * 50)
+     print('| ','1. | Pembajakan (traktor)    | Rp. 200.000    |')  
+     print('| ','2. | Penggemburan (traktor)  | Rp. 175.000    |')
+     print('| ','3. | Pemanenan (traktor)     | Rp. 400.000    |')
+     print('| ','4. | penanaman Bibit         | Rp.  50.000    |')
+     print('| ','5. | Pemupukan               | Rp.  50.000    |')
+     print('| ','6. | Irigasi                 | Rp.  50.000    |')
+     print('| ','7. | Penyemprotan pestisida  | Rp.  75.000    |')
+     print('| ','8. | Pemangkasan             | Rp.  50.000    |')
+     print('| ','9. | Penyiangan Gulma        | Rp.  30.000    |')
+     print("|", "0. | Keluar                                   |")
+     print('=' * 50)
+     global input_jasa,waktu_jam,total
+     total = 0
+     input_jasa = int(input('Masukkan pilihan anda [1], [2], dst: '))
+     waktu_jam = int(input("Masukkan lama waktu perawatan: "))
+     if input_jasa == 1 :
+          harga = waktu_jam * 200000
+          total += harga
+          pilihHari()
+     elif input_jasa == 2:
+          harga = waktu_jam * 175000
+          total += harga
+          pilihHari()
+     elif input_jasa == 3:
+          harga = waktu_jam * 400000
+          total += harga
+          pilihHari()
+     elif input_jasa == 4:
+          harga = waktu_jam *  50000
+          total += harga
+          pilihHari()
+     elif input_jasa == 5:
+          harga = waktu_jam *  50000
+          total += harga
+          pilihHari()
+     elif input_jasa == 6:
+          harga = waktu_jam *  50000
+          total += harga
+          pilihHari()
+     elif input_jasa == 7:
+          harga = waktu_jam *  75000
+          total += harga
+          pilihHari()
+     elif input_jasa == 8:
+          harga = waktu_jam *  50000
+          total += harga
+          pilihHari()
+     elif input_jasa == 9:
+          harga = waktu_jam *  30000
+          total += harga
+          pilihHari()
+     elif input_jasa == 0:
+          tampilanAwal()
+     else:
+          print('Inputan Anda Salah')
+          return
+     print(f'Total = {total}')
+     with open('menu.csv', mode='r') as filecsv:
+          reader = csv.reader(filecsv)
+          target_row_index = input_jasa
+          for i, row in enumerate(reader):
+               if i == target_row_index - 1:
+                    menu = row        
+       
+def pilihHari():
+     hari = input("Silahkan masukkan hari yang anda butuhkan untuk merawat lahan pertanian anda [ketik 0 jika tidak ada]:  ").lower()
+     if hari == "senin":
+          jadwalSenin()
+     elif hari == 'selasa':
+          jadwalSelasa()
+     elif hari == 'rabu':
+          jadwalRabu()
+     elif hari == 'kamis':
+          jadwalKamis()
+     elif hari == 'jumat':
+          jadwalJumat()
+     elif hari == 'sabtu':
+          jadwalSabtu()
+     elif hari == 'Minggu':
+          jadwalMinggu()
+     else:
+          print("Inputan salah, Silahkan Ulangi Lagi")
+          return
+     
+def riwayat():
+     urutan = ["Pembajakan (traktor)", 'Penggemburan (traktor)', 'Pemanenan (traktor)', 'penanaman Bibit', 'Pemupukan', 'Irigasi' , 'Penyemprotan pestisida', 'Pemangkasan', "Penyiangan Gulma" ]
+     for i in range(1,10):
+      if input_jasa == i :
+       jasa = [ urutan[i], waktu_jam * 200000 ]
+       global file_csv
+     file_csv = "riwayat.csv"
+     if not(Path(file_csv).is_file()):
+          with open(file_csv, mode='w' , newline=" ") as filecsv:
+               header = csv.DictWriter(filecsv, fieldnames=['HARI','JAM','PENGGARAP'], delimiter= ",")
+               header.writeheader()
+               writer = csv.writer(filecsv)
+               file_csv = writer.writerow([jasa])
+               
+def rincianPesanan():
+     os.system('cls')
+     print('=' * 50)
+     print('| ',"PESANAN ANDA".center(50), '|')
+     print('=' * 50)   
+
+def pembayaran():
+     os.system('cls')
+     os.system('cls')
+     print('=' * 50)
+     print('|', 'SELAMAT DATANG DI APLIKASI "GARAP"'.center(52), '|')
+     print('=' * 50)
+
+def tampilanAwal():
+    os.system('cls')
+    print("=" * 115)
+    print("SELAMAT DATANG DI JASA PERAWATAN LAHAN PERTANIAN".center(115))
+    print("=" * 115)
+    print("1. LOGIN")
+    print("2. REGISTER")
+    print("3. LOGIN ADMIN")
+    
+    input_login = input("Masukkan pilihan anda, [1], [2], [3] : ")
+    if input_login == "1":
+        Login()
+        input("Enter Untuk Melanjutkan")
+        pesanan()
+        while True:
+          lanjut = input('Apakah ada pesanan lagi? ').lower()
+          riwayat()
+          if lanjut == 'ada':
+               pesanan()
+          elif lanjut != 'ada':
+               print('Baiklah, Terima Kasih Sudah Memesan Jasa Kami')
+               print(file_csv)
+               break            
+
+    elif input_login == "2":
+        cekAkunRegister()
+    elif input_login == "3":
+         cekAkunAdmin()
+    else:
+         input('\n Yang Anda Masukkan Tidak Valid, Enter Jika Ingin Melanjutkan')
+tampilanAwal()
+
