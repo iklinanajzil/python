@@ -89,8 +89,14 @@ def jadwalSenin():
      print("=" * 58) 
      print('|','   JADWAL KOSONG BURUH TANI SELAMA 1 MINGGU KEDEPAN   '.center(56), "|" )   
      print('=' * 58)
-     mydata = [['=' * 10, '='* 20, '='* 20], ['Senin', '04:00-06:00', 'Pak Budi'], ["Senin", '06:30-08:30', 'Pak Budi'], ["Senin", '09:00-11:00', 'Pak Budi'], ["Senin", '12:00-14:00', 'Pak Budi'], ["Senin", '14:30-16:30', 'Pak Budi'], ['Senin', '04:00-06:00', 'Pak Ali'], ["Senin", '06:30-08:30', 'Pak Ali'], ["Senin", '09:00-11:00', 'Pak Ali'], ["Senin", '12:00-14:00', 'Pak Ali'], ["Senin", '14:30-16:30', 'Pak Ali'] ]
-     nama_kolom = ['HARI', 'JAM', 'PENGGARAP']
+     mydata = [['=' * 10, '='* 20, '='* 20], 
+               ['Senin', '04:00-06:00', 'Tersedia'], ["Senin", '06:30-08:30', 'Tersedia'], 
+               ["Senin", '09:00-11:00', 'Tersedia'], ["Senin", '12:00-14:00', 'Tersedia'], 
+               ["Senin", '14:30-16:30', 'Tersedia'], ['Senin', '04:00-06:00', 'Tersedia'], 
+               ["Senin", '06:30-08:30', 'Tersedia'], ["Senin", '09:00-11:00', 'Tersedia'], 
+               ["Senin", '12:00-14:00', 'Tersedia'], ["Senin", '14:30-16:30', 'Tersedia'] 
+               ]
+     nama_kolom = ['HARI', 'JAM', 'STATUS']
      df = pd.DataFrame(mydata, columns = nama_kolom)
      # while True:
      print(df)
@@ -105,8 +111,14 @@ def jadwalSelasa():
      print("=" * 58) 
      print('|','JADWAL KOSONG BURUH TANI SELAMA 1 MINGGU KEDEPAN'.center(56), "|" )   
      print('=' * 58)
-     mydata = [['=' * 10, '='* 20, '='* 20], ['Selasa', '04:00-06:00', 'Pak Budi'], ["Selasa", '06:30-08:30', 'Pak Budi'], ["Selasa", '09:00-11:00', 'Pak Budi'], ["Selasa", '12:00-14:00', 'Pak Budi'], ["Selasa", '14:30-16:30', 'Pak Budi'], ['Selasa', '04:00-06:00', 'Pak Ali'], ["Selasa", '06:30-08:30', 'Pak Ali'], ["Selasa", '09:00-11:00', 'Pak Ali'], ["Selasa", '12:00-14:00', 'Pak Ali'], ["Selasa", '14:30-16:30', 'Pak Ali'] ]
-     nama_kolom = ['HARI', 'JAM', 'PENGGARAP']
+     mydata = [['=' * 10, '='* 20, '='* 20], 
+               ['Selasa', '04:00-06:00', 'Tersedia'], ["Selasa", '06:30-08:30', 'Tersedia'], 
+               ["Selasa", '09:00-11:00', 'Tersedia'],["Selasa", '12:00-14:00', 'Tersedia'], 
+               ["Selasa", '14:30-16:30', 'Tersedia'], ['Selasa', '04:00-06:00', 'Tersedia'], 
+               ["Selasa", '06:30-08:30', 'Tersedia'], ["Selasa", '09:00-11:00', 'Tersedia'], 
+               ["Selasa", '12:00-14:00', 'Tersedia'], ["Selasa", '14:30-16:30', 'Tersedia'] 
+               ]
+     nama_kolom = ['HARI', 'JAM', 'STATUS']
      df = pd.DataFrame(mydata, columns = nama_kolom)
      print(df)
      jam = int(input('\nAnda Ingin Memesan pada Jam berapa, [1], [2], [3], [4], [5], [6], [7]: '))
@@ -120,8 +132,14 @@ def jadwalRabu():
      print("=" * 58) 
      print('|','JADWAL KOSONG BURUH TANI SELAMA 1 MINGGU KEDEPAN'.center(56), "|" )   
      print('=' * 58)
-     mydata = [['=' * 10, '='* 20, '='* 20], ['Rabu', '04:00-06:00', 'Pak Budi'], ["Rabu", '06:30-08:30', 'Pak Budi'], ["Rabu", '09:00-11:00', 'Pak Budi'], ["Rabu", '12:00-14:00', 'Pak Budi'], ["Rabu", '14:30-16:30', 'Pak Budi'], ['Rabu', '04:00-06:00', 'Pak Ali'], ["Rabu", '06:30-08:30', 'Pak Ali'], ["Rabu", '09:00-11:00', 'Pak Ali'], ["Rabu", '12:00-14:00', 'Pak Ali'], ["Rabu", '14:30-16:30', 'Pak Ali'] ]
-     nama_kolom = ['HARI', 'JAM', 'PENGGARAP']
+     mydata = [['=' * 10, '='* 20, '='* 20], 
+               ['Rabu', '04:00-06:00', 'Tersedia'], ["Rabu", '06:30-08:30', 'Tersedia'], 
+               ["Rabu", '09:00-11:00', 'Tersedia'], ["Rabu", '12:00-14:00', 'Tersedia'], 
+               ["Rabu", '14:30-16:30', 'Tersedia'], ['Rabu', '04:00-06:00', 'Tersedia'], 
+               ["Rabu", '06:30-08:30', 'Tersedia'], ["Rabu", '09:00-11:00', 'Tersedia'], 
+               ["Rabu", '12:00-14:00', 'Tersedia'], ["Rabu", '14:30-16:30', 'Tersedia'] 
+               ]
+     nama_kolom = ['HARI', 'JAM', 'STATUS']
      df = pd.DataFrame(mydata, columns = nama_kolom)
      print(df)
      jam = int(input('\nAnda Ingin Memesan pada Jam berapa, [1], [2], [3], [4], [5], [6], [7]: '))
@@ -135,8 +153,14 @@ def jadwalKamis():
      print("=" * 58) 
      print('|','   JADWAL KOSONG BURUH TANI SELAMA 1 MINGGU KEDEPAN   ', "|" )   
      print('=' * 58)
-     mydata = [['=' * 10, '='* 20, '='* 20], ['Kamis', '04:00-06:00', 'Pak Budi'], ["Kamis", '06:30-08:30', 'Pak Budi'], ["Kamis", '09:00-11:00', 'Pak Budi'], ["Kamis", '12:00-14:00', 'Pak Budi'], ["Kamis", '14:30-16:30', 'Pak Budi'], ['Kamis', '04:00-06:00', 'Pak Ali'], ["Kamis", '06:30-08:30', 'Pak Ali'], ["Kamis", '09:00-11:00', 'Pak Ali'], ["Kamis", '12:00-14:00', 'Pak Ali'], ["Kamis", '14:30-16:30', 'Pak Ali'] ]
-     nama_kolom = ['HARI', 'JAM', 'PENGGARAP']
+     mydata = [['=' * 10, '='* 20, '='* 20], 
+               ['Kamis', '04:00-06:00', 'Tersedia'], ["Kamis", '06:30-08:30', 'Tersedia'], 
+               ["Kamis", '09:00-11:00', 'Tersedia'], ["Kamis", '12:00-14:00', 'Tersedia'], 
+               ["Kamis", '14:30-16:30', 'Tersedia'], ['Kamis', '04:00-06:00', 'Tersedia'], 
+               ["Kamis", '06:30-08:30', 'Tersedia'], ["Kamis", '09:00-11:00', 'Tersedia'], 
+               ["Kamis", '12:00-14:00', 'Tersedia'], ["Kamis", '14:30-16:30', 'Tersedia'] 
+               ]
+     nama_kolom = ['HARI', 'JAM', 'STATUS']
      df = pd.DataFrame(mydata, columns = nama_kolom)
      print(df)
      jam = int(input('\nAnda Ingin Memesan pada Jam berapa, [1], [2], [3], [4], [5], [6], [7]: '))
@@ -150,8 +174,14 @@ def jadwalJumat():
      print("=" * 58) 
      print('|','   JADWAL KOSONG BURUH TANI SELAMA 1 MINGGU KEDEPAN   ', "|" )   
      print('=' * 58)
-     mydata = [['=' * 10, '='* 20, '='* 20], ['Jumat', '04:00-06:00', 'Pak Budi'], ["Jumat", '06:30-08:30', 'Pak Budi'], ["Jumat", '09:00-11:00', 'Pak Budi'], ["Jumat", '12:00-14:00', 'Pak Budi'], ["Jumat", '14:30-16:30', 'Pak Budi'], ['Jumat', '04:00-06:00', 'Pak Ali'], ["Jumat", '06:30-08:30', 'Pak Ali'], ["Jumat", '09:00-11:00', 'Pak Ali'], ["Jumat", '12:00-14:00', 'Pak Ali'], ["Jumat", '14:30-16:30', 'Pak Ali'] ]
-     nama_kolom = ['HARI', 'JAM', 'PENGGARAP']
+     mydata = [['=' * 10, '='* 20, '='* 20], 
+               ['Jumat', '04:00-06:00', 'Tersedia'], ["Jumat", '06:30-08:30', 'Tersedia'], 
+               ["Jumat", '09:00-11:00', 'Tersedia'], ["Jumat", '12:00-14:00', 'Tersedia'], 
+               ["Jumat", '14:30-16:30', 'Tersedia'], ['Jumat', '04:00-06:00', 'Tersedia'], 
+               ["Jumat", '06:30-08:30', 'Tersedia'], ["Jumat", '09:00-11:00', 'Tersedia'], 
+               ["Jumat", '12:00-14:00', 'Tersedia'], ["Jumat", '14:30-16:30', 'Tersedia'] 
+               ]
+     nama_kolom = ['HARI', 'JAM', 'STATUS']
      df = pd.DataFrame(mydata, columns = nama_kolom)
      print(df)
      jam = int(input('\nAnda Ingin Memesan pada Jam berapa, [1], [2], [3], [4], [5], [6], [7]: '))
@@ -165,8 +195,14 @@ def jadwalSabtu():
      print("=" * 58) 
      print('|','   JADWAL KOSONG BURUH TANI SELAMA 1 MINGGU KEDEPAN   ', "|" )   
      print('=' * 58)
-     mydata = [['=' * 10, '='* 20, '='* 20], ['Sabtu', '04:00-06:00', 'Pak Budi'], ["Sabtu", '06:30-08:30', 'Pak Budi'], ["Sabtu", '09:00-11:00', 'Pak Budi'], ["Sabtu", '12:00-14:00', 'Pak Budi'], ["Sabtu", '14:30-16:30', 'Pak Budi'], ['Sabtu', '04:00-06:00', 'Pak Ali'], ["Sabtu", '06:30-08:30', 'Pak Ali'], ["Sabtu", '09:00-11:00', 'Pak Ali'], ["Sabtu", '12:00-14:00', 'Pak Ali'], ["Sabtu", '14:30-16:30', 'Pak Ali'] ]
-     nama_kolom = ['HARI', 'JAM', 'PENGGARAP']
+     mydata = [['=' * 10, '='* 20, '='* 20], 
+               ['Sabtu', '04:00-06:00', 'Tersedia'], ["Sabtu", '06:30-08:30', 'Tersedia'], 
+               ["Sabtu", '09:00-11:00', 'Tersedia'], ["Sabtu", '12:00-14:00', 'Tersedia'], 
+               ["Sabtu", '14:30-16:30', 'Tersedia'], ['Sabtu', '04:00-06:00', 'Tersedia'], 
+               ["Sabtu", '06:30-08:30', 'Tersedia'], ["Sabtu", '09:00-11:00', 'Tersedia'], 
+               ["Sabtu", '12:00-14:00', 'Tersedia'], ["Sabtu", '14:30-16:30', 'Tersedia'] 
+               ]
+     nama_kolom = ['HARI', 'JAM', 'STATUS']
      df = pd.DataFrame(mydata, columns = nama_kolom)
      print(df)
      jam = int(input('\nAnda Ingin Memesan pada Jam berapa, [1], [2], [3], [4], [5], [6], [7]: '))
@@ -180,8 +216,14 @@ def jadwalMinggu():
      print("=" * 58) 
      print('|','   JADWAL KOSONG BURUH TANI SELAMA 1 MINGGU KEDEPAN   ', "|" )   
      print('=' * 58)
-     mydata = [['=' * 10, '='* 20, '='* 20], ['Minggu', '04:00-06:00', 'Pak Budi'], ["Minggu", '06:30-08:30', 'Pak Budi'], ["Minggu", '09:00-11:00', 'Pak Budi'], ["Minggu", '12:00-14:00', 'Pak Budi'], ["Minggu", '14:30-16:30', 'Pak Budi'], ['Minggu', '04:00-06:00', 'Pak Ali'], ["Minggu", '06:30-08:30', 'Pak Ali'], ["Minggu", '09:00-11:00', 'Pak Ali'], ["Minggu", '12:00-14:00', 'Pak Ali'], ["Minggu", '14:30-16:30', 'Pak Ali'] ]
-     nama_kolom = ['HARI', 'JAM', 'PENGGARAP']
+     mydata = [['=' * 10, '='* 20, '='* 20], 
+               ['Minggu', '04:00-06:00', 'Tersedia'], ["Minggu", '06:30-08:30', 'Tersedia'], 
+               ["Minggu", '09:00-11:00', 'Tersedia'], ["Minggu", '12:00-14:00', 'Tersedia'], 
+               ["Minggu", '14:30-16:30', 'Tersedia'], ['Minggu', '04:00-06:00', 'Tersedia'], 
+               ["Minggu", '06:30-08:30', 'Tersedia'], ["Minggu", '09:00-11:00', 'Tersedia'], 
+               ["Minggu", '12:00-14:00', 'Tersedia'], ["Minggu", '14:30-16:30', 'Tersedia'] 
+               ]
+     nama_kolom = ['HARI', 'JAM', 'STATUS']
      df = pd.DataFrame(mydata, columns = nama_kolom)
      print(df)
      jam = int(input('\nAnda Ingin Memesan pada Jam berapa, [1], [2], [3], [4], [5], [6], [7]: '))
@@ -292,7 +334,7 @@ def riwayat():
      file_csv = "riwayat.csv"
      if not(Path(file_csv).is_file()):
           with open(file_csv, mode='w' , newline=" ") as filecsv:
-               header = csv.DictWriter(filecsv, fieldnames=['HARI','JAM','PENGGARAP'], delimiter= ",")
+               header = csv.DictWriter(filecsv, fieldnames=['HARI','JAM','STATUS'], delimiter= ",")
                header.writeheader()
                writer = csv.writer(filecsv)
                file_csv = writer.writerow([jasa])
@@ -341,4 +383,3 @@ def tampilanAwal():
     else:
          input('\n Yang Anda Masukkan Tidak Valid, Enter Jika Ingin Melanjutkan')
 tampilanAwal()
-
