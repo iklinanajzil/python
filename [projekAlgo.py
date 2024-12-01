@@ -331,7 +331,7 @@ def Ubah_Status():
     print('=' * 60)
     print('Ubah Status Ketersediaan'.center(60))
     print('=' * 60)
-    # Menentukan hari
+    
     hari_admin = input('Masukkan hari yang ingin diubah jadwalnya (senin-minggu): ').capitalize()
     if hari_admin not in ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu']:
         print('Hari tidak valid, silakan coba lagi.')
@@ -362,7 +362,6 @@ def Ubah_Status():
     jam_ubah = input('Masukkan jam yang akan di ubah statusnya [04:00-05:00]: ')
     status_baru = input('Masukkan status baru (Tersedia/Tidak Tersedia): ').capitalize()
 
-# nambah index
     with open(nama_file, 'r', newline='', encoding='utf-8') as file:
         reader = list(csv.reader(file))
 
@@ -373,7 +372,7 @@ def Ubah_Status():
 
     with open(nama_file, 'w', newline='', encoding='utf-8') as file:
         writer = csv.writer(file)
-        writer.writerow(header)  # Menulis header kembali
+        writer.writerow(header)  
         writer.writerows(data)
     print(f"Baris baru berhasil ditambahkan di indeks {inputan_index} pada file {nama_file}.")
 
